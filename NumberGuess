@@ -1,0 +1,112 @@
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Guess Number Game</title>
+   
+</head>
+
+<body style="text-align:center;margin-top:10%;">
+
+<p font-size:300%>Click the "Start" button to start game</p>
+
+<button onclick="gameFunction()">Start</button>
+
+
+
+
+<script type="text/javascript">
+   function computerBuilder(min,max){
+   var range=max-min;
+   var rand=Math.random();
+   return (min+Math.floor(rand*range+1));
+   }
+
+   function gameFunction() {
+      var x=Math.floor((Math.random()*50)+1);
+      var playerGuess;
+      var playerGuessNumber;
+      var eGuessNumber;
+      var a=1;
+      var b=50;
+      playerGuess=window.prompt("Guess a number between 1 and 50 inclusive");
+      playerGuessNumber=parseInt(playerGuess);
+        
+         
+        while(playerGuessNumber!=x)
+        {
+           while(playerGuessNumber>x)
+           {
+               window.alert("the number is between "+a+" and "+playerGuessNumber);
+               eGuessNumber=computerBuilder(a,playerGuessNumber);
+               window.alert("Computer guess "+eGuessNumber);
+               if(eGuessNumber>x)
+                  {
+                     window.alert("the number is between "+a+" and "+eGuessNumber);
+                     a=a;b=eGuessNumber;
+                     playerGuess=window.prompt("Guess a number between "+a+" and "+b+" inclusive");
+                     playerGuessNumber=parseInt(playerGuess);
+                     continue;
+                  }  
+               if(eGuessNumber<x)
+                  {
+                     window.alert("the number is between "+eGuessNumber+" and "+playerGuessNumber);
+                     a=elayerGuessNumber;b=playerGuessNumber;
+                     playerGuess=window.prompt("Guess a number between "+b+" and "+a+" inclusive");
+                     playerGuessNumber=parseInt(playerGuess);
+                     continue;
+                  }
+               if(eGuessNumber==x)
+                 {
+                     window.alert("Matched,you lose!");
+                 }
+               break;
+            }
+
+            while(playerGuessNumber<x)
+            {
+                 window.alert("the number is between "+playerGuessNumber+" and "+b);
+                 eGuessNumber=computerBuilder(playerGuessNumber,b);
+                 window.alert("Computer guess "+eGuessNumber);
+                 if(eGuessNumber>x)
+                    {
+                        window.alert("the number is between "+playerGuessNumber+" and "+eGuessNumber);
+                        a=playerGuessNumber;b=eGuessNumber;
+                        playerGuess=window.prompt("Guess a number between "+a+" and "+b+" inclusive");
+                        playerGuessNumber=parseInt(playerGuess);
+                        continue;
+                     }  
+                  if(eGuessNumber<x)
+                    {
+                       window.alert("the number is between "+eGuessNumber+" and "+ b);
+                       a=eGuessNumber;b=b;
+                       playerGuess=window.prompt("Guess a number between "+a+" and "+b+" inclusive");
+                       playerGuessNumber=parseInt(playerGuess);
+                       continue;
+                    }
+                  if(eGuessNumber==x)
+                    {
+                       window.alert("Matched,you lose!");
+                       return;
+                    }
+                 break;
+            }
+         }
+
+         if(playerGuessNumber==null)
+         {
+            window.alert("Game is over!");
+         }
+        if(playerGuessNumber==x)
+         {
+            window.alert("Matched,you win!");
+         }
+        
+   }
+
+
+</script>
+
+</body>
+</html>
+
+
